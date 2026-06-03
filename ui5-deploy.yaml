@@ -24,3 +24,4 @@ builder:
         exclude:
           - /test/
           - /localService/*
+          
