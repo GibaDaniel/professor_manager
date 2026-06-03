@@ -1,0 +1,32 @@
+<core:FragmentDefinition
+      xmlns="sap.m"
+      xmlns:core="sap.ui.core"
+      xmlns:t="sap.ui.table">
+      <FlexBox height="700px" alignItems="Stretch">
+          <items>
+              <Table id="hwTable"
+                     width="40%"
+                     items="{path: '_Homeworks', parameters: {$count: true}}"
+                     mode="SingleSelectMaster"
+                     selectionChange=".onHomeworkSelect">
+                  <columns>
+                      <Column><Text text="Title"/></Column>
+                      <Column><Text text="Due"/></Column>
+                  </columns>
+                  <items>
+                      <ColumnListItem>
+                          <cells>
+                              <Text text="{Title}"/>
+                              <Text text="{DueDate}"/>
+                          </cells>
+                      </ColumnListItem>
+                  </items>
+              </Table>
+              <PDFViewer id="hwPdf"
+                         width="60%"
+                         height="100%"
+                         source=""
+                         showDownloadButton="true"/>
+          </items>
+      </FlexBox>
+  </core:FragmentDefinition>

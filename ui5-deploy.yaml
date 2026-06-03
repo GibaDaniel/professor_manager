@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "4.0"
+metadata:
+  name: professormanager
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: abap-cloud-shared-abap-cis-engineering_shared-abap-eu21-gh1049h4-dev
+          url: https://2168c8b0-9b84-4027-854c-1e5452f04413.abap.canaryazure.hanavlab.ondemand.com
+          scp: true
+        app:
+          name: ZCF_PROFESS_APP
+          package: ZCAMPUSFLOW
+          transport: ''
+        exclude:
+          - /test/
+          - /localService/*

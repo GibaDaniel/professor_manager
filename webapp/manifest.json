@@ -1,0 +1,480 @@
+{
+  "_version": "1.83.1",
+  "sap.app": {
+    "id": "zcf_professor_app",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.25.0",
+      "toolsId": "ca9715a8-1cb9-41c7-bf09-acaa99d10a13"
+    },
+    "dataSources": {
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zcf_ui_professor_o4/srvd/sap/zcf_ui_student/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "ZCFProfessor-manage": {
+          "semanticObject": "ZCFProfessor",
+          "action": "manage",
+          "title": "{{ZCFProfessor-manage.flpTitle}}",
+          "subTitle": "{{ZCFProfessor-manage.flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.145.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {},
+        "sap.f": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "professormanager.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ProfessorList",
+          "target": [
+            "ProfessorList"
+          ]
+        },
+        {
+          "pattern": "Professor({key}):?query:",
+          "name": "ProfessorObjectPage",
+          "target": [
+            "ProfessorList",
+            "ProfessorObjectPage"
+          ]
+        },
+        {
+          "name": "Professor__CrsOffrObjectPage",
+          "pattern": "Professor({key})/_CrsOffr({_CrsOffrKey}):?query:",
+          "target": [
+            "ProfessorList",
+            "ProfessorObjectPage",
+            "Professor__CrsOffrObjectPage"
+          ]
+        },
+        {
+          "name": "Professor__CrsOffrObjectPage",
+          "pattern": "Professor({key})/_CrsOffr({_CrsOffrKey}):?query:",
+          "target": "Professor__CrsOffrObjectPage"
+        },
+        {
+          "name": "Professor__CrsOffr__EnrollmentObjectPage",
+          "pattern": "Professor({key})/_CrsOffr({_CrsOffrKey})/_Enrollment({_EnrollmentKey}):?query:",
+          "target": [
+            "Professor__CrsOffr__EnrollmentObjectPage"
+          ]
+        },
+        {
+          "name": "Professor__CrsOffr__ExamObjectPage",
+          "pattern": "Professor({key})/_CrsOffr({_CrsOffrKey})/_Exam({_ExamKey}):?query:",
+          "target": [
+            "Professor__CrsOffr__ExamObjectPage"
+          ]
+        },
+        {
+          "name": "Professor__CrsOffr__HomeworkObjectPage",
+          "pattern": "Professor({key})/_CrsOffr({_CrsOffrKey})/_Homework({_HomeworkKey}):?query:",
+          "target": [
+            "Professor__CrsOffr__HomeworkObjectPage"
+          ]
+        },
+        {
+          "name": "Professor__CrsOffr__ScheduleObjectPage",
+          "pattern": "Professor({key})/_CrsOffr({_CrsOffrKey})/_Schedule({_ScheduleKey}):?query:",
+          "target": [
+            "Professor__CrsOffr__ScheduleObjectPage"
+          ]
+        },
+        {
+          "name": "Professor__CrsOffr__Enrollment__AttendanceObjectPage",
+          "pattern": "Professor({key})/_CrsOffr({_CrsOffrKey})/_Enrollment({_EnrollmentKey})/_Attendance({_AttendanceKey}):?query:",
+          "target": [
+            "Professor__CrsOffr__Enrollment__AttendanceObjectPage"
+          ]
+        },
+        {
+          "name": "Professor__CrsOffr__Enrollment__CourseAttendanceObjectPage",
+          "pattern": "Professor({key})/_CrsOffr({_CrsOffrKey})/_Enrollment({_EnrollmentKey})/_CourseAttendance({_CourseAttendanceKey}):?query:",
+          "target": [
+            "Professor__CrsOffr__Enrollment__CourseAttendanceObjectPage"
+          ]
+        },
+        {
+          "name": "Professor__CrsOffr__Enrollment__GradeObjectPage",
+          "pattern": "Professor({key})/_CrsOffr({_CrsOffrKey})/_Enrollment({_EnrollmentKey})/_Grade({_GradeKey}):?query:",
+          "target": [
+            "Professor__CrsOffr__Enrollment__GradeObjectPage"
+          ]
+        },
+        {
+          "name": "Professor__CrsOffr__Enrollment__HomeworkObjectPage",
+          "pattern": "Professor({key})/_CrsOffr({_CrsOffrKey})/_Enrollment({_EnrollmentKey})/_Homework({_HomeworkKey}):?query:",
+          "target": [
+            "Professor__CrsOffr__Enrollment__HomeworkObjectPage"
+          ]
+        },
+        {
+          "name": "Professor__CrsOffr__Enrollment__LabAttendanceObjectPage",
+          "pattern": "Professor({key})/_CrsOffr({_CrsOffrKey})/_Enrollment({_EnrollmentKey})/_LabAttendance({_LabAttendanceKey}):?query:",
+          "target": [
+            "Professor__CrsOffr__Enrollment__LabAttendanceObjectPage"
+          ]
+        },
+        {
+          "name": "Professor__CrsOffr__Enrollment__SemAttendanceObjectPage",
+          "pattern": "Professor({key})/_CrsOffr({_CrsOffrKey})/_Enrollment({_EnrollmentKey})/_SemAttendance({_SemAttendanceKey}):?query:",
+          "target": [
+            "Professor__CrsOffr__Enrollment__SemAttendanceObjectPage"
+          ]
+        }
+      ],
+      "targets": {
+        "ProfessorList": {
+          "type": "Component",
+          "id": "ProfessorList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Professor",
+              "variantManagement": "Page",
+              "navigation": {
+                "Professor": {
+                  "detail": {
+                    "route": "ProfessorObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable",
+                    "widthIncludingColumnHeader": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ProfessorObjectPage": {
+          "type": "Component",
+          "id": "ProfessorObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Professor",
+              "controlConfiguration": {
+                "_ProfDept/@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "widthIncludingColumnHeader": true
+                  }
+                }
+              },
+              "navigation": {
+                "_CrsOffr": {
+                  "detail": {
+                    "route": "Professor__CrsOffrObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Professor__CrsOffrObjectPage": {
+          "type": "Component",
+          "id": "Professor__CrsOffrObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {
+                "_Enrollment": {
+                  "detail": {
+                    "route": "Professor__CrsOffr__EnrollmentObjectPage"
+                  }
+                },
+                "_Exam": {
+                  "detail": {
+                    "route": "Professor__CrsOffr__ExamObjectPage"
+                  }
+                },
+                "_Homework": {
+                  "detail": {
+                    "route": "Professor__CrsOffr__HomeworkObjectPage"
+                  }
+                },
+                "_Schedule": {
+                  "detail": {
+                    "route": "Professor__CrsOffr__ScheduleObjectPage"
+                  }
+                }
+              },
+              "contextPath": "/Professor/_CrsOffr",
+              "controlConfiguration": {
+                "_Schedule/@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "widthIncludingColumnHeader": true
+                  }
+                },
+                "_Enrollment/@com.sap.vocabularies.UI.v1.LineItem#ForCoursePage": {
+                  "tableSettings": {
+                    "widthIncludingColumnHeader": true
+                  }
+                },
+                "_Exam/@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "widthIncludingColumnHeader": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Professor__CrsOffr__EnrollmentObjectPage": {
+          "type": "Component",
+          "id": "Professor__CrsOffr__EnrollmentObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {
+                "_Attendance": {
+                  "detail": {
+                    "route": "Professor__CrsOffr__Enrollment__AttendanceObjectPage"
+                  }
+                },
+                "_CourseAttendance": {
+                  "detail": {
+                    "route": "Professor__CrsOffr__Enrollment__CourseAttendanceObjectPage"
+                  }
+                },
+                "_Grade": {
+                  "detail": {
+                    "route": "Professor__CrsOffr__Enrollment__GradeObjectPage"
+                  }
+                },
+                "_Homework": {
+                  "detail": {
+                    "route": "Professor__CrsOffr__Enrollment__HomeworkObjectPage"
+                  }
+                },
+                "_LabAttendance": {
+                  "detail": {
+                    "route": "Professor__CrsOffr__Enrollment__LabAttendanceObjectPage"
+                  }
+                },
+                "_SemAttendance": {
+                  "detail": {
+                    "route": "Professor__CrsOffr__Enrollment__SemAttendanceObjectPage"
+                  }
+                }
+              },
+              "contextPath": "/Professor/_CrsOffr/_Enrollment"
+            }
+          },
+          "contextPattern": "/Professor({key})/_CrsOffr({_CrsOffrKey})/_Enrollment({_EnrollmentKey})"
+        },
+        "Professor__CrsOffr__ExamObjectPage": {
+          "type": "Component",
+          "id": "Professor__CrsOffr__ExamObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/Professor/_CrsOffr/_Exam"
+            }
+          },
+          "contextPattern": "/Professor({key})/_CrsOffr({_CrsOffrKey})/_Exam({_ExamKey})"
+        },
+        "Professor__CrsOffr__HomeworkObjectPage": {
+          "type": "Component",
+          "id": "Professor__CrsOffr__HomeworkObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/Professor/_CrsOffr/_Homework"
+            }
+          },
+          "contextPattern": "/Professor({key})/_CrsOffr({_CrsOffrKey})/_Homework({_HomeworkKey})"
+        },
+        "Professor__CrsOffr__ScheduleObjectPage": {
+          "type": "Component",
+          "id": "Professor__CrsOffr__ScheduleObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/Professor/_CrsOffr/_Schedule"
+            }
+          },
+          "contextPattern": "/Professor({key})/_CrsOffr({_CrsOffrKey})/_Schedule({_ScheduleKey})"
+        },
+        "Professor__CrsOffr__Enrollment__AttendanceObjectPage": {
+          "type": "Component",
+          "id": "Professor__CrsOffr__Enrollment__AttendanceObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/Professor/_CrsOffr/_Enrollment/_Attendance"
+            }
+          },
+          "contextPattern": "/Professor({key})/_CrsOffr({_CrsOffrKey})/_Enrollment({_EnrollmentKey})/_Attendance({_AttendanceKey})"
+        },
+        "Professor__CrsOffr__Enrollment__CourseAttendanceObjectPage": {
+          "type": "Component",
+          "id": "Professor__CrsOffr__Enrollment__CourseAttendanceObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/Professor/_CrsOffr/_Enrollment/_CourseAttendance"
+            }
+          },
+          "contextPattern": "/Professor({key})/_CrsOffr({_CrsOffrKey})/_Enrollment({_EnrollmentKey})/_CourseAttendance({_CourseAttendanceKey})"
+        },
+        "Professor__CrsOffr__Enrollment__GradeObjectPage": {
+          "type": "Component",
+          "id": "Professor__CrsOffr__Enrollment__GradeObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/Professor/_CrsOffr/_Enrollment/_Grade"
+            }
+          },
+          "contextPattern": "/Professor({key})/_CrsOffr({_CrsOffrKey})/_Enrollment({_EnrollmentKey})/_Grade({_GradeKey})"
+        },
+        "Professor__CrsOffr__Enrollment__HomeworkObjectPage": {
+          "type": "Component",
+          "id": "Professor__CrsOffr__Enrollment__HomeworkObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/Professor/_CrsOffr/_Enrollment/_Homework"
+            }
+          },
+          "contextPattern": "/Professor({key})/_CrsOffr({_CrsOffrKey})/_Enrollment({_EnrollmentKey})/_Homework({_HomeworkKey})"
+        },
+        "Professor__CrsOffr__Enrollment__LabAttendanceObjectPage": {
+          "type": "Component",
+          "id": "Professor__CrsOffr__Enrollment__LabAttendanceObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/Professor/_CrsOffr/_Enrollment/_LabAttendance"
+            }
+          },
+          "contextPattern": "/Professor({key})/_CrsOffr({_CrsOffrKey})/_Enrollment({_EnrollmentKey})/_LabAttendance({_LabAttendanceKey})"
+        },
+        "Professor__CrsOffr__Enrollment__SemAttendanceObjectPage": {
+          "type": "Component",
+          "id": "Professor__CrsOffr__Enrollment__SemAttendanceObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/Professor/_CrsOffr/_Enrollment/_SemAttendance"
+            }
+          },
+          "contextPattern": "/Professor({key})/_CrsOffr({_CrsOffrKey})/_Enrollment({_EnrollmentKey})/_SemAttendance({_SemAttendanceKey})"
+        }
+      }
+    },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {}
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  }
+}

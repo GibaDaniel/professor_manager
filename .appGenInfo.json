@@ -1,0 +1,33 @@
+{
+  "generationParameters": {
+    "generationDate": "Fri May 29 2026 12:41:27 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP Cloud)",
+    "metadataFilename": "",
+    "serviceUrl": "https://2168c8b0-9b84-4027-854c-1e5452f04413.abap.canaryazure.hanavlab.ondemand.com/sap/opu/odata4/sap/zcf_ui_professor_o4/srvd/sap/zcf_ui_student/0001/",
+    "appName": "professor_manager",
+    "appTitle": "Manage Professors",
+    "appDescription": "An SAP Fiori application.",
+    "appNamespace": "",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.145.2",
+    "enableEslint": true,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.25.0",
+    "template": "List Report Page V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "Professor"
+      },
+      {
+        "type": "Navigation Entity",
+        "value": "None"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```",
+    "valueHelpDownloaded": true
+  }
+}
